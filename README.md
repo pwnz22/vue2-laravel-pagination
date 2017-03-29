@@ -6,11 +6,11 @@
 ## Support
 > Laravel 5.x and Vue 2.x
 ## npm
-``` 
+```
 npm install vue2-laravel-pagination --save-dev
 ```
 ## yarn
-``` 
+```
 yarn add vue2-laravel-pagination --save-dev
 ```
 ## Then
@@ -21,7 +21,7 @@ import Pagination from 'vue2-laravel-pagination'
 ```$xslt
 public function getQuestion() {
     $questions = Question::paginte(5);
-    
+
     return response()->json($questions, 200);
 }
 ```
@@ -45,10 +45,26 @@ total: 25
         :current="questions.current_page"
         :total="questions.total"
         :per-page="questions.per_page"
+        @page-changed="fetchData"
     >
     </pagination>
 </template>
 ```
+> The $emit('page-changed') is triggering when the page paginate numbers or next button clicked, so you must write that method to fetch next page with your data.
+## Example
+```
+methods: {
+    fetchData(page) {
+        page = page || 1
+        axios.get('http://yurist/api/filter/all?page=' + page)
+            .then(response => {
+                this.questions = response.data
+                this.questions.current_page = page
+            })
+            .catch(err => consolel.log(err))
+    }
+}
+````
 > Styles are written within the component. You can edit or delete them, depends on you.
 ## Props
 ```
@@ -75,6 +91,7 @@ props: {
 }
 ```
 > You can play with the `pageRange` and set it for your needs.
+
 ## Manually
 Just download src/components/Pagination.vue file and import it to your **.vue** tamplate.
 ```$xslt

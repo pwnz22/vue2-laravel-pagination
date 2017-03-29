@@ -1,6 +1,6 @@
 {
     "name": "vue2-laravel-pagination",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "description": "A vue2 Laravel Paginator",
     "author": "Valijon <parliament888@gmail.com>",
     "main": "src/components/Pagination.vue",
