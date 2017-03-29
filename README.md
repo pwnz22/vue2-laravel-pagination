@@ -74,8 +74,9 @@ props: {
     }
 }
 ```
+> You can play with the `pageRange` and set it for your needs.
 ## Manually
-Just download src/Pagination.vue file and import it to your **.vue** tamplate.
+Just download src/components/Pagination.vue file and import it to your **.vue** tamplate.
 ```$xslt
 import Pagination from './Pagination.vue
 ```
