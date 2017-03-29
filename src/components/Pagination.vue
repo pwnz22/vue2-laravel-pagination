@@ -27,15 +27,18 @@
         props: {
             current: {
                 type: Number,
-                default: 1
+                default: 1,
+                required: true
             },
             total: {
                 type: Number,
-                default: 0
+                default: 0,
+                required: true
             },
             perPage: {
                 type: Number,
-                default: 0
+                default: 0,
+                required: true
             },
             pageRange: {
                 type: Number,

@@ -1,12 +1,16 @@
 {
     "name": "vue2-laravel-pagination",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A vue2 Laravel Paginator",
     "author": "Valijon <parliament888@gmail.com>",
     "main": "src/components/Pagination.vue",
     "scripts": {
         "dev": "node build/dev-server.js",
         "build": "node build/build.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pwnz22/vue2-laravel-pagination.git"
     },
     "dependencies": {
         "axios": "^0.15.3",
