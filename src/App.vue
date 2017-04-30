@@ -29,13 +29,13 @@
 
         methods: {
             fetchData(page) {
-                page = page || 1
+                page = page || 1;
                 axios.get('http://yurist/api/filter/all?page=' + page)
                     .then(response => {
-                        this.questions = response.data
-                        this.questions.current_page = page
+                        this.questions = response.data;
+                        this.questions.current_page = page;
                     })
-                    .catch(err => consolel.log(err))
+                    .catch(err => console.log(err))
             }
         },
 
