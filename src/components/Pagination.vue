@@ -1,24 +1,22 @@
 <template>
-    <div class="vue-pagination">
-        <div class="vue-pagination__left">
-            <a href="#" v-if="hasPrev()" @click.prevent="changePage(prevPage)">
-                <
-            </a>
-        </div>
+    <div>
+        <ul class="pagination" :class="customClass">
+            <li class="previous-page" @click.prevent="changePage(prevPage)" v-if="hasPrev">
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
 
-        <div class="vue-pagination__mid">
-            <ul>
-                <li v-for="page in pages" :class="{ current: current == page }">
-                    <a href="#" @click.prevent="changePage(page)">{{ page }}</a>
-                </li>
-            </ul>
-        </div>
+            <li @click.prevent="changePage(page)" :class="{ 'active': current == page }" v-for="page in pages">
+                <a href="#" v-text="page"></a>
+            </li>
 
-        <div class="vue-pagination__right">
-            <a href="#" v-if="hasNext()" @click.prevent="changePage(nextPage)">
-                >
-            </a>
-        </div>
+            <li class="next-page" @click.prevent="changePage(nextPage)" v-if="hasNext">
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -40,9 +38,13 @@
                 default: 0,
                 required: true
             },
-            pageRange: {
+            pageSidesRange: {
                 type: Number,
                 default: 3
+            },
+            customClass: {
+                type: String,
+                default: 'custom-pagination-class'
             }
         },
 
@@ -56,84 +58,35 @@
 
                 return pages
             },
-
             rangeStart() {
-                let start = this.current - this.pageRange
+                let start = this.current - this.pageSidesRange
                 return (start > 0) ? start : 1
             },
-
             rangeEnd() {
-                let end = this.current + this.pageRange
+                let end = this.current + this.pageSidesRange
                 return (end < this.totalPages) ? end : this.totalPages
             },
-
             totalPages() {
                 return Math.ceil(this.total / this.perPage)
             },
-
             nextPage() {
                 return this.current + 1
             },
-
             prevPage() {
                 return this.current - 1
+            },
+            hasPrev() {
+                return this.current > 1
+            },
+            hasNext() {
+                return this.current < this.totalPages
             }
         },
 
         methods: {
-            hasPrev() {
-                return this.current > 1
-            },
-
-            hasNext() {
-                return this.current < this.totalPages
-            },
-
             changePage(page) {
                 this.$emit('page-changed', page)
-            },
-
+            }
         }
     }
 </script>
-
-<style lang="scss">
-    .vue-pagination {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        .current {
-            background: #3b92d9;
-
-            a {
-                color: #fff;
-            }
-        }
-
-        &__mid {
-            display: flex;
-            justify-content: center;
-            width: 55%;
-
-            ul {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-            }
-
-            li {
-                display: inline-block;
-                padding: 5px 10px;
-                line-height: 1;
-
-                a {
-                    &:hover, &:focus {
-                        text-decoration: none;
-                    }
-                }
-            }
-        }
-
-    }
-</style>

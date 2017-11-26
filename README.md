@@ -3,6 +3,7 @@
 > A vue2 Laravel Paginator
 
 # Installation
+
 ## Support
 > Laravel 5.x and Vue 2.x
 ## npm
@@ -84,13 +85,13 @@ props: {
         default: 0,
         required: true
     },
-    pageRange: {
+    pageSidesRange: {
         type: Number,
         default: 3
     }
 }
 ```
-> You can play with the `pageRange` and set it for your needs.
+> `pageSidesRange` sets the pagination side length.
 
 ## Manually
 Just download src/components/Pagination.vue file and import it to your **.vue** tamplate.
@@ -98,7 +99,7 @@ Just download src/components/Pagination.vue file and import it to your **.vue** 
 import Pagination from './Pagination.vue
 ```
 
+## Run tests
 ```
-Also see example code on App.vue
+npm run test
 ```
-
