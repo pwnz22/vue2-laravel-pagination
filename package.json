@@ -12,7 +12,7 @@
   "author": "Valijon Rahimov <parliament888@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.19.2",
     "expect": "^21.2.1",
     "jsdom": "^11.4.0",
     "jsdom-global": "^3.0.2",
